@@ -64,8 +64,6 @@ namespace FBCapture
         private bool liveStreaming;
         public bool isLiveStreaming { get { return this.liveStreaming; } set { liveStreaming = value; } }
 
-        private Camera renderCamera;
-
         void Awake()
         {
 #if (UNITY_ANDROID && !UNITY_EDITOR) || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX
@@ -83,9 +81,7 @@ namespace FBCapture
         void Start()
         {
             encodingStart = false;
-            encodingStop = false;
-            renderCamera = GetComponent<Camera>();
-            renderCamera.targetTexture = renderTexture;
+            encodingStop = false;            
         }
 
         private void MuxingThread()

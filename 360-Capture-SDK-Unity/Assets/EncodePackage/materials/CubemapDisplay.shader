@@ -1,4 +1,6 @@
-﻿Shader "Custom/CubemapDisplay"
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+Shader "Custom/CubemapDisplay"
 {
 	Properties
 	{
@@ -38,7 +40,7 @@
 			v2f vert (appdata v)
 			{
 				v2f o;
-				o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv * float3(1.0, _SphereScale.y, 1.0);
 				return o;
 			}
