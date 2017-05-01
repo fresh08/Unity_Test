@@ -210,8 +210,8 @@ namespace FBCapture
             fpsTimer += Time.deltaTime;
            
             if (fpsTimer >= fps) {
-                fpsTimer = 0.0f;              
-
+                //fpsTimer = 0.0f;              
+                fpsTimer -= fps;
                 if (encodingStart) {
                     if (sceneCamera) {
                         sceneCamera.transform.position = transform.position;

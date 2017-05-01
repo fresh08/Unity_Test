@@ -124,7 +124,8 @@ namespace FBCapture
             fpsTimer += Time.deltaTime;
 
             if (fpsTimer >= fps) {
-                fpsTimer = 0.0f;
+                //fpsTimer = 0.0f;
+                fpsTimer -= fps;
                 if (encodingStart) {
                     startEncoding(renderTexture.GetNativeTexturePtr(), videoFullPath, liveStreaming, videoFPS, true);
 
@@ -183,7 +184,8 @@ namespace FBCapture
             if (threadShutdown == null) {
                 threadShutdown = new ManualResetEvent(false);
             }
-            if (flushThread == null) {
+            if (flushThread == null)
+            {
                 flushThread = new Thread(MuxingThread);
                 flushThread.Start();
             }
